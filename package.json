@@ -1,0 +1,29 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "This is my first project nodeJS",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --inspect index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuanTruongIT04/NodeJS_Beginer.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "school",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xuanTruongIT04/NodeJS_Beginer/issues"
+  },
+  "homepage": "https://github.com/xuanTruongIT04/NodeJS_Beginer#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
