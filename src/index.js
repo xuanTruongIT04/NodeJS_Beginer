@@ -6,7 +6,15 @@ const app = express();
 const port = 3000;
 
 //SET DEFAULT PATH
-app.use(express.static(path.join(__dirname, "public/")))
+app.use(express.static(path.join(__dirname, "public/")));
+
+// Middleware
+app.use(
+  express.urlencoded({
+    extened: true,
+  })
+);
+app.use(express.json());
 
 // HTTP logger
 app.use(morgan("combined"));
@@ -31,6 +39,12 @@ app.get("/news", (req, res) => {
 
 app.get("/search", (req, res) => {
   res.render("search");
+});
+
+app.post("/search", (req, res) => {
+  console.log(req.body);
+
+  res.send();
 });
 
 app.listen(port, () =>
