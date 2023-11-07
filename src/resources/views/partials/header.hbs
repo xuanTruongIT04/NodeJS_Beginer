@@ -1,16 +1,51 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="/">F8 Education</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-      </li>
+    <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/courses/create">Đăng khoá học</a>
+        <div class="dropdown">
+          <button
+            class="btn btn-dark dropdown-toggle"
+            type="button"
+            id="dropdownMenu2"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <img
+              src="https://imgv3.fotor.com/images/slider-image/a-man-holding-a-camera-with-image-filter.jpg"
+              alt=""
+              class="user-avatar"
+            />
+            Xuân Trường
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <a href="/courses/create" class="dropdown-item">Đăng khoá học</a>
+
+            <div class="dropdown-divider"></div>
+
+            <a href="/me/stored/courses" class="dropdown-item">Khoá học của tôi</a>
+            <a href="/me/stored/news" class="dropdown-item">Bài viết của tôi</a>
+
+            <div class="dropdown-divider"></div>
+
+            <a href="/logout" class="dropdown-item">Đăng xuất</a>
+          </div>
+        </div>
       </li>
+    </ul>
   </div>
+
 </nav>
