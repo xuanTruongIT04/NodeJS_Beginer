@@ -43,6 +43,15 @@ class CourseController {
             .catch(next);
     }
 
+    // [DELETE] /courses/:id
+    delete(req, res, next) {
+        Course.deleteOne({
+            _id: req.params.id,
+        })
+            .then(() => res.redirect('back'))
+            .catch(next);
+    }
+
     // [GET] /courses/:slug
     detail(req, res, next) {
         let slug = req.params.slug ?? '';

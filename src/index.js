@@ -15,11 +15,7 @@ db.connect();
 app.use(express.static(path.join(__dirname, 'public/')));
 
 // Middleware
-app.use(
-    express.urlencoded({
-        extened: true,
-    }),
-);
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Overried method form
