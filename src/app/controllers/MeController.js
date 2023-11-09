@@ -12,16 +12,16 @@ class MeController {
                     deletedCount,
                     courses: multiMongooseToObject(courses),
                 });
-                console.log('>>> COUNT DELETE: ', deletedCount);
             })
             .catch(next);
     }
 
     // [GET] /me/trashed/courses
     trashedCourses(req, res, next) {
-        Course.findDeleted()
-            .then((courses) => {
+        Promise.all([Course.findDeleted(), Course.countDocuments()])
+            .then(([courses, cntCourses]) => {
                 res.render('me/trashed-courses', {
+                    cntCourses: cntCourses,
                     courses: multiMongooseToObject(courses),
                 });
             })
