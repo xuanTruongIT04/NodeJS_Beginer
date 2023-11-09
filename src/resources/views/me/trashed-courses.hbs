@@ -1,7 +1,7 @@
 <div class="mt-4">
-  <h3>Khoá học của tôi</h3>
+  <h3>Khoá học đã xoá</h3>
   <div class="trash-div">
-    <a href="/me/trashed/courses">Thùng rác</a>
+    <a href="/me/stored/courses">Danh sách khoá học</a>
   </div>
   <div class="list-course">
     <table class="table mt-4">
@@ -22,15 +22,15 @@
           <td>{{this.level}}</td>
           <td>{{this.createdAt}}</td>
           <td>
-            <a href="/courses/{{this._id}}/edit" type="button" class="btn btn-link">Sửa</a>
-            <a href="" type="button" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}"
-              data-target="#confirm-delete-modal">Xoá bỏ</a>
+            <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}">Khôi phục</a>
+            <a href="" class="btn btn-link btn-delete-force" data-toggle="modal" data-id="{{this._id}}"
+              data-target="#confirm-delete-modal">Xoá vĩnh viễn</a>
           </td>
         </tr>
 
         {{else}}
         <tr>
-          <td colspan="5" class="text-center">Bạn chưa đăng khoá học nào. Đăng khoá học <a href="/courses/create">tại đây!</a></td>
+          <td colspan="5" class="text-center">Thùng rác trống. Quay về trở về danh sách khoá học <a href="/me/stored/courses">tại đây!</a></td>
         </tr>
         {{/each}}
       </tbody>
@@ -51,39 +51,44 @@
         </button>
       </div>
       <div class="modal-body">
-        Bạn có chắc chắn muốn xoá khoá học này?
+        Bạn có chắc chắn muốn xoá vĩnh viễn khoá học này?
       </div>
       <div class="modal-footer">
-        <button id="btn-delete-course" type="button" class="btn btn-danger">Xoá</button>
+        <button id="btn-delete-course" type="button" class="btn btn-danger">Xoá vĩnh viễn</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
 
-{{!-- Delete hidden form --}}
-<form id="delete-course-form" method="POST" >
-
-</form>
+<form id="delete-course-form" method="POST" ></form>
+<form id="restore-course-form" method="POST" ></form>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-
     var courseId = ''; 
     var deleteForm = document.getElementById("delete-course-form");
+    var restoreForm = document.getElementById("restore-course-form");
     var btnDeleteCourse = document.getElementById("btn-delete-course");
-
+    var btnRestore = $(".btn-restore")
+    
     // When dialog confirm clicked
-    $('#confirm-delete-modal').on('show.bs.modal', function (event) {
-      var button = $(event.relatedTarget);
+    $('#confirm-delete-modal').on('show.bs.modal', function (e) {
+      var button = $(e.relatedTarget);
       courseId = button.data('id')
     }) 
 
-
     btnDeleteCourse.onclick = () =>{
-      deleteForm.action = "/courses/" + courseId + "?_method=DELETE";
+      deleteForm.action = "/courses/" + courseId + "/force-delete?_method=DELETE";
       deleteForm.submit();
     }
 
+    // Restore button clicked 
+    btnRestore.click(function(e) {
+      e.preventDefault();
+      var courseId = $(this).data("id");
+      restoreForm.action = "/courses/" + courseId + "/restore?_method=PATCH";
+      restoreForm.submit();
+    })
   })
 </script>
