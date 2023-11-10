@@ -24,18 +24,30 @@
     </div>
 
     <div class="trash-div-revert">
-       <a href="/courses/create" class="btn btn-primary">Thêm khoá học</a>
+      <a href="/courses/create" class="btn btn-primary">Thêm khoá học</a>
     </div>
-    
+
   </div>
   <div class="list-course">
     <table class="table mt-4">
       <thead class="thead-light">
         <tr>
           <th scope="col" colspan="2">#</th>
-          <th scope="col">Tên khoá học</th>
-          <th scope="col">Trình độ</th>
-          <th scope="col">Thời gian tạo</th>
+          <th scope="col">
+            Tên khoá học
+            {{{sortable 'name' _sort}}}
+          </th>
+          
+          <th scope="col">
+            Trình độ
+            {{{sortable 'level' _sort}}}
+          </th>
+          
+          <th scope="col">
+            Thời gian tạo
+            {{{sortable 'createdAt' _sort}}}
+          </th>
+          
           <th scope="col">Thao tác</th>
         </tr>
       </thead>
